@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_dark">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="140dp"
-        android:layout_height="114dp"
-        android:text="HOME FRAGMENT"
-   />
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh Mục"
+            android:textSize="@dimen/font_large"
+            android:padding="@dimen/padding_small"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerviewPro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+             android:background="@color/white"
+             android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sản Phẩm"
+            android:textSize="@dimen/font_large"
+            android:padding="@dimen/padding_small"/>
+             <GridView
+                 android:id="@+id/gridListProduct"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:numColumns="2">
+             </GridView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

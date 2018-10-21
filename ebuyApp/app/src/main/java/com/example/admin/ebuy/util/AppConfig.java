@@ -39,8 +39,10 @@ public class AppConfig {
             properties.load(inputStream);
             apiEndpoint = properties.getProperty("API_ENDPOINT");
             AloAppFolderImageEdited=properties.getProperty("FRAME_IMG_EDITED");
+            WriteLog.e("TTT","open");
         } catch (IOException e) {
             System.err.println("Failed to open property file");
+            WriteLog.e("TTT","erro open");
             e.printStackTrace();
         }
     }

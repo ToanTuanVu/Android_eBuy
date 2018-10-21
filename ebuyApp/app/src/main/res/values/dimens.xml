@@ -117,4 +117,9 @@
     <dimen name="corner">10dp</dimen>
     <dimen name="cornerX">10dp</dimen>
     <dimen name="height_toolbar">40dp</dimen>
+
+    <dimen name="padding_normal">20dp</dimen>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_smallX">5dp</dimen>
+    <dimen name="padding_smallXX">3dp</dimen>
 </resources>

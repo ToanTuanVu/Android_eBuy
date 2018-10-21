@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.example.admin.ebuy.view.EBApplication;
+import com.example.admin.ebuy.EBApplication;
 
 
 /**
