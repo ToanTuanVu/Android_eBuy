@@ -10,7 +10,7 @@ import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.HomeAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
 
-public class HomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener,View.OnClickListener {
+public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private ViewPager contentView;
     private HomeAdapter homeAdapter;
     private LinearLayout btnHome,btnShopping,btnUser,btnList;
@@ -44,7 +44,55 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         btnUser.setOnClickListener(this);
 
         ivhome.setImageResource(R.drawable.ic_home_checked);
+        checkPager();
         startFirstFragment();
+        contentView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                switch (i){
+                    case 0:
+                        ivhome.setImageResource(R.drawable.ic_home_checked);
+                        ivlist.setImageResource(R.drawable.ic_list);
+                        ivshopping.setImageResource(R.drawable.ic_shopping);
+                        ivuser.setImageResource(R.drawable.ic_user);
+                        contentView.setCurrentItem(0);
+                        break;
+                    case 1:
+                        ivlist.setImageResource(R.drawable.ic_list_checked);
+                        ivhome.setImageResource(R.drawable.ic_home);
+
+                        ivshopping.setImageResource(R.drawable.ic_shopping);
+                        ivuser.setImageResource(R.drawable.ic_user);
+                        contentView.setCurrentItem(1);
+                        break;
+                    case 2:
+                        ivshopping.setImageResource(R.drawable.ic_shopping_checked);
+                        ivhome.setImageResource(R.drawable.ic_home);
+                        ivlist.setImageResource(R.drawable.ic_list);
+
+                        ivuser.setImageResource(R.drawable.ic_user);
+                        contentView.setCurrentItem(2);
+                        break;
+                    case 3:
+                        ivhome.setImageResource(R.drawable.ic_home);
+                        ivlist.setImageResource(R.drawable.ic_list);
+                        ivshopping.setImageResource(R.drawable.ic_shopping);
+                        ivuser.setImageResource(R.drawable.ic_user_checked);
+                        contentView.setCurrentItem(3);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
 
     @Override
@@ -52,88 +100,6 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
         return R.id.contentView;
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-    @Override
-    public void onPageScrolled(int i, float v, int i1) {
-
-    }
-
-    @Override
-    public void onPageSelected(int i) {
-        switch (i){
-            case 0:
-                ivhome.setImageResource(R.drawable.ic_home_checked);
-                ivlist.setImageResource(R.drawable.ic_list);
-                ivshopping.setImageResource(R.drawable.ic_shopping);
-                ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(0);
-                break;
-            case 1:
-                ivlist.setImageResource(R.drawable.ic_list_checked);
-                ivhome.setImageResource(R.drawable.ic_home);
-
-                ivshopping.setImageResource(R.drawable.ic_shopping);
-                ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(1);
-                break;
-            case 2:
-                ivshopping.setImageResource(R.drawable.ic_shopping_checked);
-                ivhome.setImageResource(R.drawable.ic_home);
-                ivlist.setImageResource(R.drawable.ic_list);
-
-                ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(2);
-                break;
-            case 3:
-                ivhome.setImageResource(R.drawable.ic_home);
-                ivlist.setImageResource(R.drawable.ic_list);
-                ivshopping.setImageResource(R.drawable.ic_shopping);
-                ivuser.setImageResource(R.drawable.ic_user_checked);
-                contentView.setCurrentItem(3);
-                break;
-        }
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int i) {
-        switch (i){
-            case 0:
-                ivhome.setImageResource(R.drawable.ic_home_checked);
-                ivlist.setImageResource(R.drawable.ic_list);
-                ivshopping.setImageResource(R.drawable.ic_shopping);
-                ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(0);
-                break;
-            case 1:
-                ivlist.setImageResource(R.drawable.ic_list_checked);
-                ivhome.setImageResource(R.drawable.ic_home);
-
-                ivshopping.setImageResource(R.drawable.ic_shopping);
-                ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(1);
-                break;
-            case 2:
-                ivshopping.setImageResource(R.drawable.ic_shopping_checked);
-                ivhome.setImageResource(R.drawable.ic_home);
-                ivlist.setImageResource(R.drawable.ic_list);
-
-                ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(2);
-                break;
-            case 3:
-                ivhome.setImageResource(R.drawable.ic_home);
-                ivlist.setImageResource(R.drawable.ic_list);
-                ivshopping.setImageResource(R.drawable.ic_shopping);
-                ivuser.setImageResource(R.drawable.ic_user_checked);
-                contentView.setCurrentItem(3);
-                break;
-        }
-
-    }
 
     @Override
     public void onClick(View view) {
@@ -162,6 +128,43 @@ public class HomeActivity extends BaseActivity implements ViewPager.OnPageChange
                 contentView.setCurrentItem(2);
                 break;
             case R.id.btnUser:
+                ivhome.setImageResource(R.drawable.ic_home);
+                ivlist.setImageResource(R.drawable.ic_list);
+                ivshopping.setImageResource(R.drawable.ic_shopping);
+                ivuser.setImageResource(R.drawable.ic_user_checked);
+                contentView.setCurrentItem(3);
+                break;
+        }
+    }
+
+    private void checkPager()
+    {
+        int i = contentView.getCurrentItem();
+        switch (i){
+            case 0:
+                ivhome.setImageResource(R.drawable.ic_home_checked);
+                ivlist.setImageResource(R.drawable.ic_list);
+                ivshopping.setImageResource(R.drawable.ic_shopping);
+                ivuser.setImageResource(R.drawable.ic_user);
+                contentView.setCurrentItem(0);
+                break;
+            case 1:
+                ivlist.setImageResource(R.drawable.ic_list_checked);
+                ivhome.setImageResource(R.drawable.ic_home);
+
+                ivshopping.setImageResource(R.drawable.ic_shopping);
+                ivuser.setImageResource(R.drawable.ic_user);
+                contentView.setCurrentItem(1);
+                break;
+            case 2:
+                ivshopping.setImageResource(R.drawable.ic_shopping_checked);
+                ivhome.setImageResource(R.drawable.ic_home);
+                ivlist.setImageResource(R.drawable.ic_list);
+
+                ivuser.setImageResource(R.drawable.ic_user);
+                contentView.setCurrentItem(2);
+                break;
+            case 3:
                 ivhome.setImageResource(R.drawable.ic_home);
                 ivlist.setImageResource(R.drawable.ic_list);
                 ivshopping.setImageResource(R.drawable.ic_shopping);
