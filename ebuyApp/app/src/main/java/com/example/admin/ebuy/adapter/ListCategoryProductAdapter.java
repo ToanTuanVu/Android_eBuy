@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.base.BaseFragment;
@@ -42,9 +43,10 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup,  int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(baseFragment.getContext());
         View view = layoutInflater.inflate(R.layout.category_product_item, viewGroup,false);
+
 
         return new ListCategoryProductAdapter.ViewHolder(view);
 
@@ -59,6 +61,10 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
                 .placeholder(R.mipmap.ic_launcher)
                 .into(viewHolder.imageView);
         viewHolder.textView.setText(listCategoryProduct.get(i).getName());
+
+
+
+
     }
 
     @Override
@@ -73,6 +79,8 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
             super(itemView);
             imageView = (ImageView)itemView.findViewById(R.id.imgCategoryProduct);
             textView = (TextView)itemView.findViewById(R.id.nameCategoryProduct);
+
+
         }
 
     }

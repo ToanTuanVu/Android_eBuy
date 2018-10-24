@@ -7,24 +7,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.model.ProductDetailData;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
+import com.example.admin.ebuy.view.EBCustomFont;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ListProductDetailAdapter extends BaseAdapter {
     private ArrayList<ProductDetailData> lisProductDetail;
+    LayoutInflater layoutInflater;
+    private BaseFragment baseFragment;
 
     public void setLisProductDetail(ArrayList<ProductDetailData> lisProductDetail) {
         this.lisProductDetail = lisProductDetail;
     }
 
-    LayoutInflater layoutInflater;
-    private BaseFragment baseFragment;
+
 
     public ListProductDetailAdapter(ArrayList<ProductDetailData> lisProductDetail, BaseFragment baseFragment) {
         this.lisProductDetail = lisProductDetail;
@@ -34,7 +37,11 @@ public class ListProductDetailAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return lisProductDetail.size();
+        if(lisProductDetail!=null)
+        {
+            return lisProductDetail.size();
+        }
+       return 0;
     }
 
     @Override
@@ -48,25 +55,31 @@ public class ListProductDetailAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
 
-        TextView txtNamePro, txtPricePro;
+        EBCustomFont txtNamePro, txtPricePro;
         ImageView imageView;
 
 
 
             view = layoutInflater.inflate(R.layout.product_detail_item, viewGroup, false);
-            txtNamePro = (TextView) view.findViewById(R.id.txtNamePro);
-            txtPricePro = (TextView) view.findViewById(R.id.pricePro);
+            txtNamePro = (EBCustomFont) view.findViewById(R.id.txtNamePro);
+            txtPricePro = (EBCustomFont) view.findViewById(R.id.pricePro);
             imageView = (ImageView)view.findViewById(R.id.imgProduct);
 
 
         Picasso.with(baseFragment.getContext())
                 .load(lisProductDetail.get(i).getImage())
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.logo)
                 .into(imageView);
         txtNamePro.setText(lisProductDetail.get(i).getName());
         txtPricePro.setText(lisProductDetail.get(i).getPrice());
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(baseFragment.getContext(),i+"",Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 }

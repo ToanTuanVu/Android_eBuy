@@ -1,7 +1,6 @@
 package com.example.admin.ebuy.model.home;
 
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.ListCategoryProductAdapter;
@@ -21,12 +21,16 @@ import com.example.admin.ebuy.network.EBServices;
 import com.example.admin.ebuy.network.ServiceFactory;
 import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.WriteLog;
+import com.example.admin.ebuy.view.MyGridview;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
 
 import rx.Observer;
 import rx.schedulers.Schedulers;
 import rx.android.schedulers.AndroidSchedulers;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements ObservableScrollViewCallbacks{
     public static final String TAG="HomeFragment";
     private ImageView imageView;
     private RecyclerView recyclerViewProduct;
@@ -34,7 +38,9 @@ public class HomeFragment extends BaseFragment {
     LinearLayoutManager linearLayoutManager;
     private GridView gridViewProduct;
     private ListProductDetailAdapter listProductDetailAdapter;
-    GridLayoutManager gridLayoutManager;
+   GridLayoutManager gridLayoutManager;
+    ObservableScrollView observableScrollView;
+    RelativeLayout rlHeader;
 
     @Override
     protected int getLayoutResourceId() {
@@ -50,17 +56,23 @@ public class HomeFragment extends BaseFragment {
 //                .load("http://sv1.upsieutoc.com/2018/10/18/thoitrangnam.png")
 //                .placeholder(R.mipmap.ic_launcher)
 //                .into(imageView);
-
-        gridViewProduct = (GridView)view.findViewById(R.id.gridListProduct);
+        rlHeader = (RelativeLayout)container.findViewById(R.id.rlHeader);
+//        observableScrollView = (ObservableScrollView) view.findViewById(R.id.scrollView) ;
+//        observableScrollView.setScrollViewCallbacks(this);
+        gridViewProduct = (MyGridview)view.findViewById(R.id.gridListProduct);
+        ((MyGridview) gridViewProduct).setExpanded(true);
         recyclerViewProduct = (RecyclerView)view.findViewById(R.id.recyclerviewPro);
         listProductDetailAdapter = new ListProductDetailAdapter(null,this);
         listCategoryProductAdapter = new ListCategoryProductAdapter(this,null);
-       linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
-        recyclerViewProduct.addItemDecoration(dividerItemDecoration);
+        gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.HORIZONTAL,false);
+//       linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
+//        recyclerViewProduct.addItemDecoration(dividerItemDecoration);
         ((BaseActivity)getActivity()).setTitle(true,"trang chủ");
         getListProduct();
         getListProductDetail();
+
+
 
     }
 
@@ -91,6 +103,7 @@ public class HomeFragment extends BaseFragment {
                         listProductDetailAdapter.setLisProductDetail(productDetailResponse.getData());
                         gridViewProduct.setAdapter(listProductDetailAdapter);
 
+
                     }
                 });
     }
@@ -117,12 +130,33 @@ public class HomeFragment extends BaseFragment {
                         recyclerViewProduct.setHasFixedSize(true);
 
 
-                        recyclerViewProduct.setLayoutManager(linearLayoutManager);
+                        recyclerViewProduct.setLayoutManager(gridLayoutManager);
                         listCategoryProductAdapter.setListCategoryProduct(productResponse.getData());
                         recyclerViewProduct.setAdapter(listCategoryProductAdapter);
 
                     }
                 });
 
+    }
+
+    @Override
+    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
+
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        if (scrollState == ScrollState.UP) {
+//            rlHeader.setVisibility(View.VISIBLE);
+//            homeActivity.rlHeader.setVisibility(View.VISIBLE);
+        } else if (scrollState == ScrollState.DOWN) {
+//            rlHeader.setVisibility(View.GONE);
+//            homeActivity.rlHeader.setVisibility(View.GONE);
+        }
     }
 }

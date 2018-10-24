@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <ImageView
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200"
+                android:layout_gravity="center" />
+
+            <com.example.admin.ebuy.view.EBCustomFont
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"/>
+            <com.example.admin.ebuy.view.EBCustomFont
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chi tiết sản phẩm"/>
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="12 tháng"
+                        android:gravity="right"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TableRow>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:text="Danh mục"/>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtDanhmuc"
+                                android:text="abc"
+                                android:gravity="center"
+                                android:layout_marginLeft="@dimen/margin_small"/>
+                        </TableRow>
+                        <TableRow>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:text="Thương hiệu"/>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtThuonhieu"
+                                android:text="abc"
+                                android:gravity="center"
+                                android:layout_marginLeft="@dimen/margin_small"
+                                />
+                        </TableRow>
+                        <TableRow>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:text="Chất liệu"/>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtChatlieu"
+                                android:text="abc"
+                                android:gravity="center"
+                                android:layout_marginLeft="@dimen/margin_small"
+                                />
+                        </TableRow>
+                        <TableRow>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:text="Gửi từ"/>
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:text="abc"
+                                android:id="@+id/txtGuitu"
+                                android:gravity="center"
+                                android:layout_marginLeft="@dimen/margin_small"
+                                />
+                        </TableRow>
+                    </TableLayout>
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="thông tin"
+                        android:layout_marginTop="@dimen/margin_smallXX"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/margin_small">
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh Giá Sản Phẩm"/>
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

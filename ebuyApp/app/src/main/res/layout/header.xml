@@ -8,6 +8,7 @@
     <TextView
         android:id="@+id/txtTitleHeader"
         android:layout_centerInParent="true"
+
         android:layout_centerVertical="true"
         android:text="Header"
         android:textColor="@color/white"

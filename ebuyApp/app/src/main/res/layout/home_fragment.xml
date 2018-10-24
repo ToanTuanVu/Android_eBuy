@@ -5,49 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/gray_dark">
+    android:background="@color/gray_line">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white"
-        >
-        <TextView
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Danh Mục"
-            android:textSize="@dimen/font_large"
-            android:padding="@dimen/padding_small"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerviewPro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </android.support.v7.widget.RecyclerView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="Danh Mục"
+                    android:textSize="@dimen/font_large" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerviewPro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:text="Sản Phẩm"
+                    android:textSize="@dimen/font_large" />
+
+                <com.example.admin.ebuy.view.MyGridview
+                    android:id="@+id/gridListProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:numColumns="2"
+                    >
+
+                </com.example.admin.ebuy.view.MyGridview>
+
+
+            </LinearLayout>
         </LinearLayout>
-
-         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-             android:background="@color/white"
-             android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sản Phẩm"
-            android:textSize="@dimen/font_large"
-            android:padding="@dimen/padding_small"/>
-             <GridView
-                 android:id="@+id/gridListProduct"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:numColumns="2">
-             </GridView>
-
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
