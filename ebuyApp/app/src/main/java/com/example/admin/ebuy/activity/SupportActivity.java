@@ -14,6 +14,7 @@ public class SupportActivity extends BaseActivity {
     @Override
     public void loadControl(Bundle savedInstanceState) {
 
+        startFirstFragment();
     }
 
     @Override

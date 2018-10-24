@@ -1,5 +1,6 @@
 package com.example.admin.ebuy.adapter;
 
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
+import com.example.admin.ebuy.activity.HomeActivity;
+import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.model.ProductDetailData;
+import com.example.admin.ebuy.model.home.ProductDetailFragment;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
+import com.example.admin.ebuy.util.Navigator;
 import com.example.admin.ebuy.view.EBCustomFont;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -55,7 +61,7 @@ public class ListProductDetailAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, final ViewGroup viewGroup) {
 
         EBCustomFont txtNamePro, txtPricePro;
         ImageView imageView;
@@ -77,7 +83,11 @@ public class ListProductDetailAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(baseFragment.getContext(),i+"",Toast.LENGTH_SHORT).show();
+                Gson gson = new Gson();
+                String data = gson.toJson(lisProductDetail.get(i));
+                Bundle bundle = new Bundle();
+                bundle.putString("data",data);
+                Navigator.getInstance().startFragment(baseFragment.getContext(),ProductDetailFragment.TAG,SupportActivity.class,bundle);
             }
         });
         return view;

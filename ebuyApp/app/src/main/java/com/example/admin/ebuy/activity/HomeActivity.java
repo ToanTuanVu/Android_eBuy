@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.HomeAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
+import com.example.admin.ebuy.model.home.ProductDetailFragment;
+import com.example.admin.ebuy.util.Navigator;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
     private ViewPager contentView;
@@ -72,6 +74,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(0);
                 break;
             case R.id.btnList:
+                Navigator.getInstance().startFragment(this,ProductDetailFragment.TAG,SupportActivity.class,null);
+
                 ivlist.setImageResource(R.drawable.ic_list_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
 
