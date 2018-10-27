@@ -10,7 +10,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.ebuy.R;
@@ -24,12 +26,13 @@ import com.example.admin.ebuy.util.Navigator;
  * Created by tuan.nguyen on 23/6/18.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener{
     public abstract int getLayoutResource();
     public abstract void loadControl(Bundle savedInstanceState);
     public abstract int getFragmentContainerViewId();
     private FragmentManager fragmentManager;
     public ProgressDialog mSpinner;
+
     public void setLoading(boolean isLoading) {
         if (isFinishing())
             return;
@@ -59,6 +62,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         IntentFilter filter1 = new IntentFilter();
         filter1.addAction(AppConfig.BROADCAST_CLOSE_POPUP);
+
+        if((ImageView)findViewById(R.id.imgBack)!=null)
+        {
+            ((ImageView)findViewById(R.id.imgBack)).setOnClickListener(this);
+        }
+
 
 
     }
@@ -121,6 +130,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.txtTitleHeader)).setAllCaps(allCap);
         }
     }
+    public void setVisibleBack(boolean b)
+    {
+        if (findViewById(R.id.imgBack)!=null){
+            if(b==true){
+                ((ImageView)findViewById(R.id.imgBack)).setVisibility(View.VISIBLE);
+            }
+            else
+            ((ImageView)findViewById(R.id.imgBack)).setVisibility(View.GONE);
+        }
+    }
 
     public String getDeviceId() {
         String android_id = Settings.Secure.getString(this.getContentResolver(),
@@ -144,4 +163,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+
+            case R.id.imgBack:
+                onBackPressed();
+                break;
+
+
+        }
+
+    }
 }

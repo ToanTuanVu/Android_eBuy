@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
         android:layout_margin="@dimen/margin_smallXX"
         android:gravity="center"
-        android:padding="@dimen/padding_small">
+        >
         <ImageView
             android:id="@+id/imgProduct"
             android:layout_width="@dimen/size_150"
@@ -23,6 +23,7 @@
             android:layout_height="@dimen/size_50"
             android:textSize="@dimen/font_big"
             android:textColor="@color/black"
+            android:padding="@dimen/padding_small"
             />
         <com.example.admin.ebuy.view.EBCustomFont
             android:id="@+id/pricePro"
@@ -31,6 +32,7 @@
             android:textSize="@dimen/font_normal"
             android:textColor="@color/black"
             android:layout_marginBottom="@dimen/margin_small"
+            android:padding="@dimen/padding_small"
             />
     </LinearLayout>
 

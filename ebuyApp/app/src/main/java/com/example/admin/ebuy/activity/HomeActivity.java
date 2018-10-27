@@ -74,7 +74,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(0);
                 break;
             case R.id.btnList:
-                Navigator.getInstance().startFragment(this,ProductDetailFragment.TAG,SupportActivity.class,null);
 
                 ivlist.setImageResource(R.drawable.ic_list_checked);
                 ivhome.setImageResource(R.drawable.ic_home);

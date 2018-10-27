@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+            android:background="@color/gray_line"
+           >
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="@dimen/padding_small">
             <ImageView
+                android:layout_marginTop="@dimen/margin_large"
+                android:id="@+id/imgview"
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_200"
                 android:layout_gravity="center" />
 
-            <com.example.admin.ebuy.view.EBCustomFont
+            <TextView
+                android:textSize="@dimen/font_largeXX"
+                android:text="name"
+                android:id="@+id/txtNamePro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"/>
             <com.example.admin.ebuy.view.EBCustomFont
+                android:textSize="@dimen/font_big"
+                android:textColor="@color/color_main"
+                android:id="@+id/txtpricePro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"/>
@@ -33,53 +48,68 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_small"
+                >
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small">
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chi tiết sản phẩm"/>
-                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:text="Chi tiết sản phẩm"
+                        android:textSize="@dimen/font_big"/>
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="12 tháng"
-                        android:gravity="right"/>
+                        android:gravity="right"
+                        android:textSize="@dimen/font_big"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="@dimen/padding_small"
                     >
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        >
 
                         <TableRow>
                             <com.example.admin.ebuy.view.EBCustomFont
-                                android:text="Danh mục"/>
+                                android:text="Danh mục"
+                                android:textSize="@dimen/font_big"/>
                             <com.example.admin.ebuy.view.EBCustomFont
                                 android:id="@+id/txtDanhmuc"
                                 android:text="abc"
                                 android:gravity="center"
+                                android:textSize="@dimen/font_big"
                                 android:layout_marginLeft="@dimen/margin_small"/>
                         </TableRow>
                         <TableRow>
                             <com.example.admin.ebuy.view.EBCustomFont
-                                android:text="Thương hiệu"/>
+                                android:text="Thương hiệu"
+                                android:textSize="@dimen/font_big"/>
+
                             <com.example.admin.ebuy.view.EBCustomFont
                                 android:id="@+id/txtThuonhieu"
-                                android:text="abc"
-                                android:gravity="center"
+                                android:textSize="@dimen/font_big"
+                                android:layout_width="271dp"
                                 android:layout_marginLeft="@dimen/margin_small"
-                                />
+                                android:gravity="center"
+                                android:text="abc" />
                         </TableRow>
                         <TableRow>
                             <com.example.admin.ebuy.view.EBCustomFont
-                                android:text="Chất liệu"/>
+                                android:text="Chất liệu"
+                                android:textSize="@dimen/font_big"/>
                             <com.example.admin.ebuy.view.EBCustomFont
                                 android:id="@+id/txtChatlieu"
+                                android:textSize="@dimen/font_big"
                                 android:text="abc"
                                 android:gravity="center"
                                 android:layout_marginLeft="@dimen/margin_small"
@@ -87,9 +117,11 @@
                         </TableRow>
                         <TableRow>
                             <com.example.admin.ebuy.view.EBCustomFont
-                                android:text="Gửi từ"/>
+                                android:text="Gửi từ"
+                                android:textSize="@dimen/font_big"/>
                             <com.example.admin.ebuy.view.EBCustomFont
                                 android:text="abc"
+                                android:textSize="@dimen/font_big"
                                 android:id="@+id/txtGuitu"
                                 android:gravity="center"
                                 android:layout_marginLeft="@dimen/margin_small"
@@ -97,6 +129,8 @@
                         </TableRow>
                     </TableLayout>
                     <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtDetailPro"
+                        android:textSize="@dimen/font_big"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="thông tin"
@@ -107,14 +141,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="@dimen/margin_small">
-                    <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:padding="@dimen/padding_small"
+                    >
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đánh Giá Sản Phẩm"/>
+                        android:text="Đánh Giá Sản Phẩm"
+                        android:textSize="@dimen/font_big"/>
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
 
                     </android.support.v7.widget.RecyclerView>
 
@@ -122,4 +160,33 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/txtAddtoBasket"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Thêm vào giỏ"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:id="@+id/txtBuynow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color_main"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Mua"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+</RelativeLayout>
