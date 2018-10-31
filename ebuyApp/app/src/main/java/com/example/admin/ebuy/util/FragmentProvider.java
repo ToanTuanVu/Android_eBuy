@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.model.home.HomeFragment;
 import com.example.admin.ebuy.model.home.ProductDetailFragment;
+import com.example.admin.ebuy.model.home.TypeFragment;
+import com.example.admin.ebuy.model.home.TypeProductFragment;
 import com.example.admin.ebuy.model.list.ListProductFragment;
 import com.example.admin.ebuy.model.shopping.ShoppingFragment;
 import com.example.admin.ebuy.model.user.UserFragment;
@@ -39,6 +41,10 @@ public class FragmentProvider {
                 return new UserFragment();
             case ProductDetailFragment.TAG:
                 return new ProductDetailFragment();
+            case TypeFragment.TAG:
+                return new TypeFragment();
+            case TypeProductFragment.TAG:
+                return new TypeProductFragment();
 //            case LoginFragment.TAG:
 //                return new LoginFragment();
 

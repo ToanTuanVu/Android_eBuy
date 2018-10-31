@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.ListCategoryProductAdapter;
 import com.example.admin.ebuy.adapter.ListProductDetailAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.base.BaseFragment;
+import com.example.admin.ebuy.inter.ItemClickListener;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
 import com.example.admin.ebuy.network.EBServices;
@@ -100,6 +102,7 @@ public class HomeFragment extends BaseFragment implements ObservableScrollViewCa
 
                     @Override
                     public void onNext(ProductDetailResponse productDetailResponse) {
+                        WriteLog.e("TAG", productDetailResponse.toString());
                         listProductDetailAdapter.setLisProductDetail(productDetailResponse.getData());
                         gridViewProduct.setAdapter(listProductDetailAdapter);
 
@@ -133,6 +136,7 @@ public class HomeFragment extends BaseFragment implements ObservableScrollViewCa
                         recyclerViewProduct.setLayoutManager(gridLayoutManager);
                         listCategoryProductAdapter.setListCategoryProduct(productResponse.getData());
                         recyclerViewProduct.setAdapter(listCategoryProductAdapter);
+
 
                     }
                 });

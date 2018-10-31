@@ -115,7 +115,7 @@
     <dimen name="font_largexxxxx">35sp</dimen>
     <dimen name="font_largexxxxxx">40sp</dimen>
     <dimen name="corner">10dp</dimen>
-    <dimen name="cornerX">10dp</dimen>
+    <dimen name="cornerX">20dp</dimen>
     <dimen name="height_toolbar">40dp</dimen>
 
     <dimen name="padding_normal">20dp</dimen>

@@ -79,7 +79,7 @@ public class ListProductDetailAdapter extends BaseAdapter {
                 .placeholder(R.mipmap.logo)
                 .into(imageView);
         txtNamePro.setText(lisProductDetail.get(i).getName());
-        txtPricePro.setText(lisProductDetail.get(i).getPrice());
+        txtPricePro.setText(lisProductDetail.get(i).getPrice()+"");
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,5 +92,7 @@ public class ListProductDetailAdapter extends BaseAdapter {
         });
         return view;
     }
+
+
 }
 

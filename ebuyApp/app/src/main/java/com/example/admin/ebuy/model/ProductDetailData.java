@@ -14,7 +14,7 @@ public class ProductDetailData {
     @JsonField(name = "image_product_detail")
     private String image;
     @JsonField(name = "price_product_detail")
-    private String price;
+    private int price;
     @JsonField(name = "quantity_product_detail")
     private int quantity;
     @JsonField(name = "color_product_detail")
@@ -64,11 +64,11 @@ public class ProductDetailData {
         this.image = image;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

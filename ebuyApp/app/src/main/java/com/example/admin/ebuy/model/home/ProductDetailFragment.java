@@ -40,7 +40,7 @@ public class ProductDetailFragment extends BaseFragment {
                 .placeholder(R.mipmap.logo)
                 .into(imgview);
         txtThuonhieu.setText(productDetailData.getTrademark());
-        txtpricePro.setText(productDetailData.getPrice());
+        txtpricePro.setText(productDetailData.getPrice()+"");
         txtNamePro.setText(productDetailData.getName());
         txtGuitu.setText(productDetailData.getAddress());
         txtChatlieu.setText(productDetailData.getMaterial());

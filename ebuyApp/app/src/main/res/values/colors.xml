@@ -24,6 +24,7 @@
     <color name="orange_dark">#DBA901</color>
     <color name="green_light">#7ED321</color>
     <color name="blue">#4A90E2</color>
+    <color name="blue_white">#d292bdef</color>
     <color name="grey_bg">#f0f2f4</color>
     <color name="red_calendar">#ff0000</color>
     <color name="yellow">#F3F781</color>

@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
+import com.example.admin.ebuy.model.respon.TypeProductResponse;
+import com.example.admin.ebuy.model.respon.TypeResponse;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -37,6 +39,14 @@ public interface EBServices {
     Observable<ProductResponse> getProduct();
     @GET(PATH+"/productdetail/getall")
     Observable<ProductDetailResponse> getProductDetail();
+    @GET(PATH+"/type/gettype")
+    Observable<TypeResponse> getType(@Query("id_ListProduct") int id);
+    @GET(PATH+"/listproduct/getProductDetailByIdListProduct")
+    Observable<ProductDetailResponse> getProductDetailByType(@Query("id_ListProduct")int listproduct);
+    @GET(PATH+"/typeProduct/gettypeProduct")
+    Observable<TypeProductResponse> getTypeProduct(@Query("id_Type") int id);
+    @GET(PATH+"/type/getProductDetailByIdType")
+    Observable<ProductDetailResponse> getProductDetailByTypeProduct(@Query("id_Type")int type);
 
 
 }
