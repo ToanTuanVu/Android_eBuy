@@ -122,4 +122,6 @@
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_smallX">5dp</dimen>
     <dimen name="padding_smallXX">3dp</dimen>
+
+    <dimen name="line">0.5dp</dimen>
 </resources>

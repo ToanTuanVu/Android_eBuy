@@ -2,6 +2,8 @@ package com.example.admin.ebuy.network;
 
 import android.graphics.Bitmap;
 
+import com.example.admin.ebuy.model.respon.CustomerRespose;
+import com.example.admin.ebuy.model.respon.FeedBackResponse;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
 import com.example.admin.ebuy.model.respon.TypeProductResponse;
@@ -41,12 +43,21 @@ public interface EBServices {
     Observable<ProductDetailResponse> getProductDetail();
     @GET(PATH+"/type/gettype")
     Observable<TypeResponse> getType(@Query("id_ListProduct") int id);
+
     @GET(PATH+"/listproduct/getProductDetailByIdListProduct")
     Observable<ProductDetailResponse> getProductDetailByType(@Query("id_ListProduct")int listproduct);
+
     @GET(PATH+"/typeProduct/gettypeProduct")
     Observable<TypeProductResponse> getTypeProduct(@Query("id_Type") int id);
+
     @GET(PATH+"/type/getProductDetailByIdType")
     Observable<ProductDetailResponse> getProductDetailByTypeProduct(@Query("id_Type")int type);
+
+    @GET(PATH+"/product/getCustomerByIdProduct")
+    Observable<CustomerRespose> getCustomerByIdProduct(@Query("id_Product")int id);
+
+    @GET(PATH+"/feedbacks/getAllByIdProductDetail")
+    Observable<FeedBackResponse> getFeedbackByIdProduct(@Query("id_product_detail")int id);
 
 
 }

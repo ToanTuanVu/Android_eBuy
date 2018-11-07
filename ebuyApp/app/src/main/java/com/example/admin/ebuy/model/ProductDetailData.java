@@ -9,6 +9,9 @@ public class ProductDetailData {
     private int id_detail;
     @JsonField(name = "id_product")
     private int id_product;
+    @JsonField(name = "id_type")
+    private int id_type;
+
     @JsonField(name = "name_product_detail")
     private String name;
     @JsonField(name = "image_product_detail")
@@ -31,6 +34,14 @@ public class ProductDetailData {
     private String trademark;
     @JsonField(name = "address_from")
     private String address;
+
+    public int getId_type() {
+        return id_type;
+    }
+
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
 
     public int getId_detail() {
         return id_detail;
