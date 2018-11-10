@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
@@ -36,7 +37,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(baseFragment.getContext());
-        View view = layoutInflater.inflate(R.layout.product_detail_item,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.product_detail_item1,viewGroup,false);
         return new ListProductAdapter.ViewHolder(view);
     }
 
@@ -51,14 +52,18 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        EBCustomFont txtNamePro, txtPricePro;
+        EBCustomFont txtNamePro, txtPricePro,txtNumLike,txtNumStar;
         ImageView imageView;
+        RatingBar ratingBar;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             txtNamePro = (EBCustomFont) itemView.findViewById(R.id.txtNamePro);
             txtPricePro = (EBCustomFont) itemView.findViewById(R.id.pricePro);
             imageView = (ImageView)itemView.findViewById(R.id.imgProduct);
+            txtNumLike = (EBCustomFont)itemView.findViewById(R.id.txtNumLike);
+            txtNumStar = (EBCustomFont)itemView.findViewById(R.id.txtNumStar);
+            ratingBar = (RatingBar)itemView.findViewById(R.id.ratingBar);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -69,6 +74,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
                     Navigator.getInstance().startFragment(baseFragment.getContext(),ProductDetailFragment.TAG,SupportActivity.class,bundle);
                 }
             });
+
         }
         private void bind(ProductDetailData productDetailData)
         {
@@ -78,6 +84,9 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
                     .into(imageView);
             txtNamePro.setText(productDetailData.getName());
             txtPricePro.setText(productDetailData.getPrice()+"");
+            txtNumLike.setText(productDetailData.getNumLike()+"");
+            txtNumStar.setText("("+productDetailData.getNumFeedback()+")");
+            ratingBar.setRating(productDetailData.getNumStar());
 
         }
     }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class ListProductDetailAdapter extends BaseAdapter {
     private ArrayList<ProductDetailData> lisProductDetail;
     LayoutInflater layoutInflater;
     private BaseFragment baseFragment;
+
 
     public void setLisProductDetail(ArrayList<ProductDetailData> lisProductDetail) {
         this.lisProductDetail = lisProductDetail;
@@ -63,14 +65,18 @@ public class ListProductDetailAdapter extends BaseAdapter {
     @Override
     public View getView(final int i, View view, final ViewGroup viewGroup) {
 
-        EBCustomFont txtNamePro, txtPricePro;
+        EBCustomFont txtNamePro, txtPricePro,txtNumLike,txtNumStar;
         ImageView imageView;
+        RatingBar ratingBar;
 
 
 
             view = layoutInflater.inflate(R.layout.product_detail_item, viewGroup, false);
             txtNamePro = (EBCustomFont) view.findViewById(R.id.txtNamePro);
             txtPricePro = (EBCustomFont) view.findViewById(R.id.pricePro);
+            txtNumLike = (EBCustomFont)view.findViewById(R.id.txtNumLike);
+            txtNumStar = (EBCustomFont)view.findViewById(R.id.txtNumStar);
+            ratingBar = (RatingBar)view.findViewById(R.id.ratingBar);
             imageView = (ImageView)view.findViewById(R.id.imgProduct);
 
 
@@ -80,6 +86,9 @@ public class ListProductDetailAdapter extends BaseAdapter {
                 .into(imageView);
         txtNamePro.setText(lisProductDetail.get(i).getName());
         txtPricePro.setText(lisProductDetail.get(i).getPrice()+"");
+        txtNumLike.setText(lisProductDetail.get(i).getNumLike()+"");
+        txtNumStar.setText("("+lisProductDetail.get(i).getNumFeedback()+")");
+        ratingBar.setRating(lisProductDetail.get(i).getNumStar());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +99,7 @@ public class ListProductDetailAdapter extends BaseAdapter {
                 Navigator.getInstance().startFragment(baseFragment.getContext(),ProductDetailFragment.TAG,SupportActivity.class,bundle);
             }
         });
+
         return view;
     }
 

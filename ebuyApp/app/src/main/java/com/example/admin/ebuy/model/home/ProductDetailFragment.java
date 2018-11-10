@@ -5,15 +5,20 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
+import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.adapter.FeedbackAdapter;
 import com.example.admin.ebuy.adapter.ListProductAdapter;
 import com.example.admin.ebuy.adapter.ListProductDetailAdapter;
@@ -39,7 +44,7 @@ import rx.schedulers.Schedulers;
 
 public class ProductDetailFragment extends BaseFragment {
     public static final String TAG = "ProductDetailFragment";
-    EBCustomFont txtpricePro, txtDanhmuc, txtThuonhieu, txtChatlieu, txtGuitu, txtDetailPro;
+    EBCustomFont txtpricePro, txtDanhmuc, txtThuonhieu, txtChatlieu, txtGuitu, txtDetailPro,txtNumLike,txtNumStar;
     TextView txtNamePro,txtNameShop,txtAddressShop;
     CircleImageView imgAvatarShop;
     ImageView imgview;
@@ -48,6 +53,11 @@ public class ProductDetailFragment extends BaseFragment {
     LinearLayoutManager linearLayoutManager,linearLayoutManagerHorizontal;
 
     ListProductAdapter listProductAdapter;
+    LinearLayout linearLayout;
+    GestureDetector gestureDetector;
+    int SWIPE_THERSHOLD=70;
+    int SWIPE_VELOCITY =70;
+    RatingBar ratingBar;
     @Override
     protected int getLayoutResourceId() {
         return R.layout.product_detail_fragment;
@@ -70,6 +80,10 @@ public class ProductDetailFragment extends BaseFragment {
         txtGuitu.setText(productDetailData.getAddress());
         txtChatlieu.setText(productDetailData.getMaterial());
         txtDetailPro.setText(productDetailData.getDescribe());
+        txtNumLike.setText(productDetailData.getNumLike()+"");
+        txtNumStar.setText("("+productDetailData.getNumFeedback()+")");
+        ratingBar.setRating(productDetailData.getNumStar());
+
 
         feedbackAdapter = new FeedbackAdapter(this);
         linearLayoutManagerHorizontal = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -77,10 +91,13 @@ public class ProductDetailFragment extends BaseFragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
         recyclerViewCommet.addItemDecoration(dividerItemDecoration);
 
+
+
         listProductAdapter = new ListProductAdapter(this);
 
 
         ((BaseActivity) getActivity()).setTitle(true, productDetailData.getName());
+        gestureDerector();
         getCustomerByID(productDetailData.getId_product());
         getFeedbackByIDProduct(productDetailData.getId_product());
         getListProductDetailByTypeProduct(productDetailData.getId_type());
@@ -106,9 +123,36 @@ public class ProductDetailFragment extends BaseFragment {
         imgAvatarShop = (CircleImageView)view.findViewById(R.id.imgAvatarShop);
         recyclerViewCommet = (RecyclerView)view.findViewById(R.id.recyFeedbackList);
         recyclerViewPro = (RecyclerView)view.findViewById(R.id.recyclerviewPro);
+        linearLayout = (LinearLayout)view.findViewById(R.id.linearLayout);
+        txtNumLike = (EBCustomFont)view.findViewById(R.id.txtNumLike);
+        txtNumStar = (EBCustomFont)view.findViewById(R.id.txtNumStar);
+        ratingBar = (RatingBar)view.findViewById(R.id.ratingBar);
 
     }
+    private void gestureDerector()
+    {
+        gestureDetector = new GestureDetector(getActivity(),new ProductDetailFragment.MyGesture());
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                gestureDetector.onTouchEvent(motionEvent);
+
+                return true;
+            }
+        });
+    }
+    public class MyGesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+
+            if(e2.getX() - e1.getX() >SWIPE_THERSHOLD && Math.abs(velocityX) >SWIPE_VELOCITY)
+            {
+                getActivity().onBackPressed();
+            }
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    }
     private void getCustomerByID(int id) {
         ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
                 .getCustomerByIdProduct(id)
@@ -158,7 +202,6 @@ public class ProductDetailFragment extends BaseFragment {
                     @Override
                     public void onNext(FeedBackResponse feedBackResponse) {
                         WriteLog.e("TAG", feedBackResponse.toString());
-                        Toast.makeText(getContext(), feedBackResponse.toString(), Toast.LENGTH_SHORT).show();
                         recyclerViewCommet.setHasFixedSize(true);
                         recyclerViewCommet.setLayoutManager(linearLayoutManager);
                         feedbackAdapter.setListFeedBackData(feedBackResponse.getData());

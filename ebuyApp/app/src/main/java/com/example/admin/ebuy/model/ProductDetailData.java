@@ -11,7 +11,6 @@ public class ProductDetailData {
     private int id_product;
     @JsonField(name = "id_type")
     private int id_type;
-
     @JsonField(name = "name_product_detail")
     private String name;
     @JsonField(name = "image_product_detail")
@@ -34,6 +33,36 @@ public class ProductDetailData {
     private String trademark;
     @JsonField(name = "address_from")
     private String address;
+    @JsonField(name = "countstar")
+    private  int numStar;
+    @JsonField(name ="countfeedback")
+    private int numFeedback;
+    @JsonField(name = "countlike")
+    private int numLike;
+
+    public int getNumStar() {
+        return numStar;
+    }
+
+    public void setNumStar(int numStar) {
+        this.numStar = numStar;
+    }
+
+    public int getNumFeedback() {
+        return numFeedback;
+    }
+
+    public void setNumFeedback(int numFeedback) {
+        this.numFeedback = numFeedback;
+    }
+
+    public int getNumLike() {
+        return numLike;
+    }
+
+    public void setNumLike(int numLike) {
+        this.numLike = numLike;
+    }
 
     public int getId_type() {
         return id_type;

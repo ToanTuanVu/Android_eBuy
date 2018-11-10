@@ -34,6 +34,7 @@ import rx.android.schedulers.AndroidSchedulers;
 
 public class HomeFragment extends BaseFragment implements ObservableScrollViewCallbacks{
     public static final String TAG="HomeFragment";
+    
     private ImageView imageView;
     private RecyclerView recyclerViewProduct;
     private ListCategoryProductAdapter listCategoryProductAdapter;
@@ -142,6 +143,7 @@ public class HomeFragment extends BaseFragment implements ObservableScrollViewCa
                 });
 
     }
+
 
     @Override
     public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {

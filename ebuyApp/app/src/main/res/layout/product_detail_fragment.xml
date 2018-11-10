@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/gray_light"
-
+            android:id="@+id/linearLayout"
             android:orientation="vertical">
 
             <LinearLayout
@@ -52,6 +53,38 @@
                     android:layout_gravity="left"
                     android:textColor="@color/color_main"
                     android:textSize="@dimen/font_big" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtNumLike"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="@dimen/padding_smallX"
+                        android:text="1"
+                        android:textSize="@dimen/font_small"
+                        android:drawableLeft="@drawable/ic_like"
+                        android:drawablePadding="@dimen/padding_smallXX"/>
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="@style/MyRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:rating="3"
+                        />
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtNumStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="@dimen/font_small"
+                        android:padding="@dimen/padding_smallXX"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -286,7 +319,9 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyFeedbackList"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp">
+                        android:layout_height="wrap_content"
+
+                        >
 
                     </android.support.v7.widget.RecyclerView>
 
@@ -299,6 +334,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/padding_small"
                     android:layout_marginBottom="@dimen/margin_large"
+
                     >
 
                     <TextView
@@ -312,6 +348,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:numColumns="2"
+                        android:layout_marginBottom="@dimen/margin_large"
                         >
 
                     </android.support.v7.widget.RecyclerView>

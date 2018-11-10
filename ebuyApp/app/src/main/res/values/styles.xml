@@ -17,6 +17,7 @@
         <item name="android:backgroundTint">@color/color_main</item>
         <item name="colorControlNormal">@color/color_main</item>
         <item name="colorControlActivated">@color/color_main</item>
+        <item name="android:numStars">5</item>
 
     </style>
 

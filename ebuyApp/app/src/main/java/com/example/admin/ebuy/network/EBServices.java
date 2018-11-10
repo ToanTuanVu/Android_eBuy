@@ -4,8 +4,10 @@ import android.graphics.Bitmap;
 
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
+import com.example.admin.ebuy.model.respon.LikeResponse;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
+import com.example.admin.ebuy.model.respon.StarResponse;
 import com.example.admin.ebuy.model.respon.TypeProductResponse;
 import com.example.admin.ebuy.model.respon.TypeResponse;
 
@@ -58,6 +60,12 @@ public interface EBServices {
 
     @GET(PATH+"/feedbacks/getAllByIdProductDetail")
     Observable<FeedBackResponse> getFeedbackByIdProduct(@Query("id_product_detail")int id);
+
+    @GET(PATH+"/feedbacks/getStar")
+    Observable<StarResponse> getStar(@Query("id_product_detail")int id);
+
+    @GET(PATH+"/feedbacks/getCountLike")
+    Observable<LikeResponse> getLike(@Query("id_product_detail")int id);
 
 
 }

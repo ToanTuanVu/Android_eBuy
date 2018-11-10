@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -36,6 +38,11 @@ public class TypeProductFragment extends BaseFragment {
 
     private ListCategoryProductAdapter listCategoryProductAdapter;
     private LinearLayoutManager linearLayoutManager;
+    GestureDetector gestureDetector;
+    int SWIPE_THERSHOLD=70;
+    int SWIPE_VELOCITY =70;
+    LinearLayout linearLayout;
+
     @Override
     protected int getLayoutResourceId() {
         return R.layout.home_fragment;
@@ -54,8 +61,10 @@ public class TypeProductFragment extends BaseFragment {
         listProductDetailAdapter = new ListProductDetailAdapter(null,this);
         listCategoryProductAdapter = new ListCategoryProductAdapter(this,null);
         linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        linearLayout = (LinearLayout)view.findViewById(R.id.linearLayout);
 
         ((BaseActivity)getActivity()).setTitle(true,name);
+        gestureDerector();
         getTypeProduct(data);
         getListProductDetailByTypeProduct(data);
     }
@@ -63,6 +72,30 @@ public class TypeProductFragment extends BaseFragment {
     @Override
     public String getTagName() {
         return TAG;
+    }
+    private void gestureDerector()
+    {
+        gestureDetector = new GestureDetector(getActivity(),new TypeProductFragment.MyGesture());
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                gestureDetector.onTouchEvent(motionEvent);
+
+                return true;
+            }
+        });
+    }
+    public class MyGesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+
+            if(e2.getX() - e1.getX() >SWIPE_THERSHOLD && Math.abs(velocityX) >SWIPE_VELOCITY)
+            {
+                getActivity().onBackPressed();
+            }
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
     }
     void getTypeProduct(int type)
     {
